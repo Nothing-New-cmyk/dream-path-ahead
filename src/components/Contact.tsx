@@ -123,66 +123,88 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className={`bg-white/10 backdrop-blur-lg border-white/20 transition-all duration-1000 transform ${
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Contact Form - Enhanced for Desktop */}
+          <Card className={`bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-1000 transform ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
           }`}>
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white font-playfair">Send us a Message</CardTitle>
+            <CardHeader className="pb-8">
+              <CardTitle className="text-3xl font-bold text-white font-playfair flex items-center gap-3">
+                <Send className="w-8 h-8 text-blue-400" />
+                Send us a Message
+              </CardTitle>
+              <p className="text-gray-300 mt-2 text-lg">
+                We'd love to hear from you. Drop us a message and we'll respond as soon as possible.
+              </p>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
+            <CardContent className="pt-0">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium text-gray-200">
+                      Full Name *
+                    </label>
                     <Input
+                      id="name"
                       type="text"
                       name="name"
-                      placeholder="Your Name *"
+                      placeholder="Enter your full name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="bg-white/10 border-white/30 text-white placeholder:text-gray-300"
+                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base focus:border-blue-400 focus:ring-blue-400/20 transition-colors"
                       required
                     />
                   </div>
-                  <div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-gray-200">
+                      Email Address *
+                    </label>
                     <Input
+                      id="email"
                       type="email"
                       name="email"
-                      placeholder="Your Email *"
+                      placeholder="Enter your email address"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="bg-white/10 border-white/30 text-white placeholder:text-gray-300"
+                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base focus:border-blue-400 focus:ring-blue-400/20 transition-colors"
                       required
                     />
                   </div>
                 </div>
-                <div>
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="text-sm font-medium text-gray-200">
+                    Subject
+                  </label>
                   <Input
+                    id="subject"
                     type="text"
                     name="subject"
-                    placeholder="Subject"
+                    placeholder="What's this about?"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-white/10 border-white/30 text-white placeholder:text-gray-300"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base focus:border-blue-400 focus:ring-blue-400/20 transition-colors"
                   />
                 </div>
-                <div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium text-gray-200">
+                    Message *
+                  </label>
                   <Textarea
+                    id="message"
                     name="message"
-                    placeholder="Your Message *"
-                    rows={5}
+                    placeholder="Tell us more about your inquiry..."
+                    rows={6}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="bg-white/10 border-white/30 text-white placeholder:text-gray-300 resize-none"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 resize-none text-base focus:border-blue-400 focus:ring-blue-400/20 transition-colors"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-4 h-14 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl text-lg"
                 >
-                  <Send className="w-5 h-5 mr-2" />
+                  <Send className="w-5 h-5 mr-3" />
                   Send Message
                 </Button>
               </form>
